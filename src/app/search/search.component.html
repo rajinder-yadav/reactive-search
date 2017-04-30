@@ -1,0 +1,7 @@
+<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="search">
+  <button type="submit">Send</button>
+</form>
+<div>
+  {{word$|async}}
+</div>

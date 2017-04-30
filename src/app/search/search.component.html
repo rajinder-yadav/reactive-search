@@ -1,7 +1,10 @@
+<div>
+  Keyword: {{word$|async}}
+</div>
 <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
   <input type="text" formControlName="search">
   <button type="submit">Send</button>
 </form>
-<div>
-  {{word$|async}}
+<div *ngFor="let album of albums">
+ {{album.name}}
 </div>

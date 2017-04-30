@@ -1,8 +1,17 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/empty';
+
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-search',
@@ -15,8 +24,11 @@ export class SearchComponent implements OnInit, AfterViewInit {
   search = new FormControl('');
 
   word$: Observable<string>;
+  albums: string[];
 
-  constructor(public fb: FormBuilder) { }
+  constructor(
+    public fb: FormBuilder,
+    public http: Http) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -27,8 +39,25 @@ export class SearchComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.word$ = this.search.valueChanges
                             .debounceTime(200);
+    // this.word$
+    //   .subscribe(v => {
+    //     this.http.get(`https://api.spotify.com/v1/search?q=${v}&type=album`)
+    //       .map(res => res.json())
+    //       .catch(err => Observable.empty())
+    //       .map(data => data.albums)
+    //       .do(v => console.log(v))
+    //       .subscribe(data => this.albums = data.items);
+    //   });
+
     this.word$
-      .subscribe(v => console.log(v));
+      .switchMap(v =>
+        this.http.get(`https://api.spotify.com/v1/search?q=${v}&type=album`)
+            .map(res => res.json())
+            .catch(err => Observable.empty())
+      )
+      .map(data => data.albums)
+      .do(v => console.log(v))
+      .subscribe(data => this.albums = data.items);
   }
 
   onSubmit() {

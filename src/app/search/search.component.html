@@ -1,10 +1,10 @@
-<div>
+<div class="mb2">
   Keyword: {{word$|async}}
 </div>
-<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
+<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="mb3">
   <input type="text" formControlName="search">
   <button type="submit">Send</button>
 </form>
-<div *ngFor="let album of albums">
+<div *ngFor="let album of albums; odd as isOdd" class="ba pa2 w-50" [ngClass]="{'bg-lightest-blue': isOdd, 'bg-washed-red': !isOdd}">
  {{album.name}}
 </div>

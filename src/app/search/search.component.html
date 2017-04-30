@@ -5,6 +5,6 @@
   <input type="text" formControlName="search">
   <button type="submit">Send</button>
 </form>
-<div *ngFor="let album of albums; odd as isOdd" class="ba pa2 w-50" [ngClass]="{'bg-lightest-blue': isOdd, 'bg-washed-red': !isOdd}">
+<div *ngFor="let album of album$|async; odd as isOdd" class="ba pa2 w-50" [ngClass]="{'bg-lightest-blue': isOdd, 'bg-washed-red': !isOdd}">
  {{album.name}}
 </div>

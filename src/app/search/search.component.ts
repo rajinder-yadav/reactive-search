@@ -24,7 +24,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
   search = new FormControl('');
 
   word$: Observable<string>;
-  albums: string[];
+  // albums: string[];
+  album$: Observable<string[]>;
 
   constructor(
     public fb: FormBuilder,
@@ -39,16 +40,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.word$ = this.search.valueChanges
                             .debounceTime(200);
-    // this.word$
-    //   .subscribe(v => {
-    //     this.http.get(`https://api.spotify.com/v1/search?q=${v}&type=album`)
-    //       .map(res => res.json())
-    //       .catch(err => Observable.empty())
-    //       .map(data => data.albums)
-    //       .do(v => console.log(v))
-    //       .subscribe(data => this.albums = data.items);
-    //   });
 
+    this.album$ =
     this.word$
       .switchMap(v =>
         this.http.get(`https://api.spotify.com/v1/search?q=${v}&type=album`)
@@ -57,7 +50,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
       )
       .map(data => data.albums)
       .do(v => console.log(v))
-      .subscribe(data => this.albums = data.items);
+      .map(data => data.items);
+      // .subscribe(data => this.albums = data.items);
   }
 
   onSubmit() {

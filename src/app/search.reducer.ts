@@ -2,12 +2,12 @@ import * as SearchActions from './search.actions';
 
 export interface State {
   searchTerm: string;
-  album: string[];
+  albums: string[];
 }
 
 const initialState: State = {
   searchTerm: '',
-  album: []
+  albums: []
 };
 
 export function reducer(state: State = initialState, action: SearchActions.All): State {
@@ -23,7 +23,7 @@ export function reducer(state: State = initialState, action: SearchActions.All):
     case SearchActions.SEARCH_SUCCESS: {
       return {
         ...state,
-        album: action.playload
+        albums: action.playload
       };
     }
 

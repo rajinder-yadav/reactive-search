@@ -8,8 +8,8 @@ export class Search implements Action {
   constructor(public playload: string) {}
 }
 
-export class SearchSuccess implements Action {
+export class SearchResult implements Action {
   readonly type = SEARCH_SUCCESS;
   constructor(public playload: string[]) {}
 }
-export type All = Search | SearchSuccess;
+export type All = Search | SearchResult;

@@ -33,8 +33,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
   constructor(
     public store: Store<fromRoot.State>,
     public fb: FormBuilder ) {
-      this.term$ = store.select(state => state.search.searchTerm);
-      this.albums$ = store.select(state => state.search.album);
+      this.term$ = store.select(fromRoot.selectSearchTerm);
+      this.albums$ = store.select(fromRoot.selectAlbums);
     }
 
   ngOnInit() {
@@ -47,18 +47,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
     this.search.valueChanges
       .debounceTime(200)
       .subscribe(term => this.store.dispatch(new SearchActions.Search(term)));
-
-    // this.album$ =
-    // this.word$
-    //   .switchMap(v =>
-    //     this.http.get(`https://api.spotify.com/v1/search?q=${v}&type=album`)
-    //         .map(res => res.json())
-    //         .catch(err => Observable.empty())
-    //   )
-    //   .map(data => data.albums)
-    //   .do(v => console.log(v))
-    //   .map(data => data.items);
-      // .subscribe(data => this.albums = data.items);
   }
 
   onSubmit() {

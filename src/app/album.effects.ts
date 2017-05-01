@@ -23,7 +23,7 @@ export class AlbumEffects {
       )
       .map(data => data.albums)
       .do(v => console.log(v))
-      .map(data => new SearchAction.SearchSuccess(data.items));
+      .map(data => new SearchAction.SearchResult(data.items));
 
   constructor(
     public http: Http,

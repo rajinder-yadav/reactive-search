@@ -3,6 +3,12 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from './reducers';
+
+import { AlbumEffects } from './album.effects';
+
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 
@@ -14,7 +20,9 @@ import { SearchComponent } from './search/search.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    StoreModule.provideStore(reducers),
+    EffectsModule.run(AlbumEffects)
   ],
   providers: [],
   bootstrap: [AppComponent]

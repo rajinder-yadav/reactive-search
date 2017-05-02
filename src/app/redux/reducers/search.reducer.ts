@@ -1,4 +1,4 @@
-import * as SearchActions from './search.actions';
+import * as SearchActions from '../actions/search.actions';
 
 export interface State {
   searchTerm: string;

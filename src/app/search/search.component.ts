@@ -13,8 +13,8 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
 
 import { Store } from '@ngrx/store';
-import * as SearchActions from '../search.actions';
-import * as fromRoot from '../reducers';
+import * as SearchActions from '../redux/actions/search.actions';
+import * as fromRoot from '../redux/reducers';
 
 @Component({
   selector: 'app-search',

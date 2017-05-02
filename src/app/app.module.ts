@@ -5,9 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers } from './reducers';
+import { reducers } from '../app/redux/reducers';
 
-import { AlbumEffects } from './album.effects';
+import { AlbumEffects } from '../app/redux/effects/album.effects';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';

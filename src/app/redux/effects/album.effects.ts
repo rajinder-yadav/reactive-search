@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 
 import { Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
-import * as SearchAction from './search.actions';
+import * as SearchAction from '../actions/search.actions';
 
 @Injectable()
 export class AlbumEffects {

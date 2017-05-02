@@ -1,4 +1,4 @@
-import * as songSearch from './search.reducer';
+import * as songSearch from './reducers/search.reducer';
 
 export interface State {
   search: songSearch.State;

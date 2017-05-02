@@ -2,8 +2,8 @@
   Keyword: {{term$|async}}
 </div>
 <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="mb3">
-  <input type="text" formControlName="search">
-  <button type="submit">Send</button>
+  Song <input type="text" formControlName="search">
+  <button type="submit">Search</button>
 </form>
 <div *ngFor="let album of albums$|async; odd as isOdd" class="ba pa2 w-50" [ngClass]="{'bg-lightest-blue': isOdd, 'bg-washed-red': !isOdd}">
  <img [src]="album.images[2].url"> {{album.name}}

@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 export const SEARCH = 'Songs::Search';
-export const SEARCH_SUCCESS = 'Songs::Search Success';
+export const SEARCH_RESULT = 'Songs::Search Result';
 
 export class Search implements Action {
   readonly type = SEARCH;
@@ -9,7 +9,7 @@ export class Search implements Action {
 }
 
 export class SearchResult implements Action {
-  readonly type = SEARCH_SUCCESS;
+  readonly type = SEARCH_RESULT;
   constructor(public playload: string[]) {}
 }
 export type All = Search | SearchResult;

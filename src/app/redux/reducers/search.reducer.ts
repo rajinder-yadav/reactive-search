@@ -20,7 +20,7 @@ export function reducer(state: State = initialState, action: SearchActions.All):
       };
     }
 
-    case SearchActions.SEARCH_SUCCESS: {
+    case SearchActions.SEARCH_RESULT: {
       return {
         ...state,
         albums: action.playload

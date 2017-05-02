@@ -6,5 +6,5 @@
   <button type="submit">Send</button>
 </form>
 <div *ngFor="let album of albums$|async; odd as isOdd" class="ba pa2 w-50" [ngClass]="{'bg-lightest-blue': isOdd, 'bg-washed-red': !isOdd}">
- {{album.name}}
+ <img [src]="album.images[2].url"> {{album.name}}
 </div>

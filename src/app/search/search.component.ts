@@ -28,7 +28,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
   albums$: Observable<string[]>;
 
   form: FormGroup;
-  search = new FormControl('');
 
   constructor(
     public store: Store<fromRoot.State>,
@@ -39,12 +38,12 @@ export class SearchComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      search: this.search
+      search: ''
     });
   }
 
   ngAfterViewInit() {
-    this.search.valueChanges
+    this.form.get('search').valueChanges
       .debounceTime(200)
       .subscribe(term => this.store.dispatch(new SearchActions.Search(term)));
   }

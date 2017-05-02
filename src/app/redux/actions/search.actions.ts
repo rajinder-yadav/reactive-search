@@ -12,4 +12,5 @@ export class SearchResult implements Action {
   readonly type = SEARCH_RESULT;
   constructor(public playload: string[]) {}
 }
+
 export type All = Search | SearchResult;
